@@ -1,7 +1,14 @@
 #!/bin/sh
 
 os=`uname`
-dir=$(dirname $(readlink -f "$0"))
+
+if [ $os == "Darwin" ]
+then
+  dir=$(dirname $(greadlink -f "$0"))
+else
+  dir=$(dirname $(readlink -f "$0"))
+fi
+
 echo "Current OS is $os"
 
 link()
@@ -18,6 +25,6 @@ for location in $(find home -name '.*'); do
   file="${location##*/}"
   file="${file%.sh}"
   link "$dir/$location" "$HOME/$file"
-done | column -s'>' -t -o'  >'
+done | column -s'>' -t
 
 
