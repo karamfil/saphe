@@ -1,4 +1,4 @@
 [submodule "zsh/zprezto"]
 	path = zsh/zprezto
-	url = git@github.com:karamfil/prezto.git
+	url = https://github.com/karamfil/prezto.git
 	branch = master

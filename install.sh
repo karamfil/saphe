@@ -4,6 +4,8 @@ os=`uname`
 
 if [ $os == "Darwin" ]
 then
+  # todo check for coreutils first
+  # brew list coreutils
   dir=$(dirname $(greadlink -f "$0"))
 else
   dir=$(dirname $(readlink -f "$0"))
