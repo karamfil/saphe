@@ -2,3 +2,6 @@
 	path = zsh/zprezto
 	url = git@github.com:karamfil/prezto.git
 	branch = master
+[submodule "vim/janus"]
+	path = vim/janus
+	url = git@github.com:carlhuda/janus.git
