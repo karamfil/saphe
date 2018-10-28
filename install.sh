@@ -6,9 +6,9 @@ if [ $os == "Darwin" ]
 then
   # todo check for coreutils first
   # brew list coreutils
-  dir=$(dirname $(greadlink -f "$0"))
+  current_dir=$(dirname $(greadlink -f "$0"))
 else
-  dir=$(dirname $(readlink -f "$0"))
+  current_dir=$(dirname $(readlink -f "$0"))
 fi
 
 echo "Current OS is $os"
@@ -22,11 +22,20 @@ link()
   ln -s "$from" "$to"
 }
 
+# think about having different installation file for different things
+# think about setting zsh $ZSHHOME and $ZPREZTO or something variable
 
+# install *sh files in home directory
 for location in $(find home -name '.*'); do
   file="${location##*/}"
   file="${file%.sh}"
-  link "$dir/$location" "$HOME/$file"
+  link "$current_dir/$location" "$HOME/$file"
 done | column -s'>' -t
 
 
+# install sublime packages
+# for location in $(find home -name '.*'); do
+#   file="${location##*/}"
+#   file="${file%.sh}"
+#   link "$current_dir/$location" "$HOME/$file"
+# done | column -s'>' -t
