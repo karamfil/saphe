@@ -5,3 +5,12 @@
 [submodule "vim/janus"]
 	path = vim/janus
 	url = git@github.com:carlhuda/janus.git
+[submodule "vim/janus-custom/solarized8"]
+	path = vim/janus-custom/solarized8
+	url = git@github.com:lifepillar/vim-solarized8.git
+[submodule "vim/janus-custom/iceberg"]
+	path = vim/janus-custom/iceberg
+	url = git@github.com:cocopon/iceberg.vim.git
+[submodule "vim/janus-custom/sunburst"]
+	path = vim/janus-custom/sunburst
+	url = git@github.com:sickill/vim-sunburst.git

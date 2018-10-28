@@ -15,8 +15,8 @@ fi
 echo "> Current OS is $os"
 
 echo '# Update submodules'
-# git submodule sync
-# git submodule update --init --recursive --remote
+git submodule sync
+git submodule update --init --recursive --remote
 
 # think about having different installation file for different things
 # think about setting zsh $ZSHHOME and $ZPREZTO or something variable
@@ -36,7 +36,7 @@ echo
 echo '# Installing vim'
 
 # install deps
-# brew install vim ack ctags
+brew install vim ack ctags
 
 rm -rf "$HOME/.vim"
 ln -vfns "$current_dir/vim/janus/janus/vim" "$HOME/.vim"
