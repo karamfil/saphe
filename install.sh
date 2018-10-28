@@ -14,11 +14,16 @@ fi
 
 echo "> Current OS is $os"
 
+echo '# Update submodules'
+# git submodule sync
+# git submodule update --init --recursive --remote
+
 # think about having different installation file for different things
 # think about setting zsh $ZSHHOME and $ZPREZTO or something variable
 
 echo
 echo '# Installing home files'
+# todo move this to be ZSH only
 # install *sh files in home directory
 for location in $(find home -name '.*'); do
   file="${location##*/}"
@@ -30,6 +35,15 @@ done | column -s'->' -t
 echo
 echo '# Installing vim'
 
+# install deps
+# brew install vim ack ctags
+
+rm -rf "$HOME/.vim"
+ln -vfns "$current_dir/vim/janus/janus/vim" "$HOME/.vim"
+ln -vfns "$current_dir/vim/vimrc.after" "$HOME/.vimrc.after"
+ln -vfns "$current_dir/vim/janus-custom" "$HOME/.janus"
+ln -vfns "$HOME/.vim/vimrc" "$HOME/.vimrc"
+
 # Sublime Text 3
 echo
 echo '# Installing Sublime Text'
@@ -40,4 +54,5 @@ echo '# Installing Sublime Text'
 
 rm -r "$sublime_dir"
 ln -vfns "$current_dir/sublime/User" "$sublime_dir"
+
 
