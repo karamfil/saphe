@@ -1,0 +1,11 @@
+{
+    // Access token to interact with the API (required)
+    "token" : "eb8e8f32a8ae9bbf33838dc5aa2573741b65052c406cd022b4da6935981c9482",
+    
+    // After creating elements or performing an action on them the panel reopens (until exit is selected)
+    "keep_navigate_open_after_action": true,
+    
+    // Set the delemiter used to create more than one card at once in 'Create card with description'
+    "card_delimiter": ";;;"
+    
+}

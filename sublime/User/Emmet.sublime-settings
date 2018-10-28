@@ -1,0 +1,10 @@
+{
+	// List of all available preferences:
+	// http://docs.emmet.io/customization/preferences/
+	
+	"disabled_keymap_actions": "toggle_comment, encode_decode_data_url, evaluate_math_expression, balance_inward, balance_outward, reflect_css_value, update_image_size",
+	
+	"preferences": {
+		"sass.propertyEnd": ";"
+	},
+}

@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$timeout(function()
+{
+	${2}
+}, ${1:10});]]></content>
+    <tabTrigger>atimeout</tabTrigger>
+    <scope>source.js</scope>
+    <description>angular timeout</description>
+</snippet>

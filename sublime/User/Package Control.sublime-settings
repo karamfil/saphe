@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ActualVim",
+		"Alignment",
+		"AngularJS",
+		"Awk",
+		"Babel",
+		"Better CoffeeScript",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"EditorConfig",
+		"NeoVintageous",
+		"Notes",
+		"Package Control",
+		"Sass",
+		"SublimeLinter",
+		"SublimeLinter-eslint",
+		"Text Pastry",
+		"Tomorrow Color Schemes",
+		"TypeScript Syntax",
+		"Vue Syntax Highlight"
+	]
+}
