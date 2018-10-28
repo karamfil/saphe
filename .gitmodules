@@ -14,3 +14,12 @@
 [submodule "vim/janus-custom/sunburst"]
 	path = vim/janus-custom/sunburst
 	url = git@github.com:sickill/vim-sunburst.git
+[submodule "vim/janus-custom/commentary"]
+	path = vim/janus-custom/commentary
+	url = git@github.com:tpope/vim-commentary.git
+[submodule "vim/janus-custom/easy-align"]
+	path = vim/janus-custom/easy-align
+	url = git@github.com:junegunn/vim-easy-align
+[submodule "vim/janus-custom/indent-object"]
+	path = vim/janus-custom/indent-object
+	url = git@github.com:michaeljsmith/vim-indent-object
