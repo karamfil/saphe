@@ -14,14 +14,6 @@ fi
 
 echo "> Current OS is $os"
 
-link()
-{
-  from="$1"
-  to="$2"
-  echo "Linking $from > $to"
-  ln -fns "$from" "$to"
-}
-
 # think about having different installation file for different things
 # think about setting zsh $ZSHHOME and $ZPREZTO or something variable
 
@@ -31,8 +23,12 @@ echo '# Installing home files'
 for location in $(find home -name '.*'); do
   file="${location##*/}"
   file="${file%.sh}"
-  link "$current_dir/$location" "$HOME/$file"
-done | column -s'>' -t
+  ln -vfns "$current_dir/$location" "$HOME/$file"
+done | column -s'->' -t
+
+# Vim
+echo
+echo '# Installing vim'
 
 # Sublime Text 3
 echo
@@ -42,13 +38,6 @@ echo '# Installing Sublime Text'
 # - open sublime > enter license > install package control > close sublime
 # - continue
 
-echo "$sublime_dir"
 rm -r "$sublime_dir"
-link "$current_dir/sublime/User" "$sublime_dir"
+ln -vfns "$current_dir/sublime/User" "$sublime_dir"
 
-# install sublime packages
-# for location in $(find home -name '.*'); do
-#   file="${location##*/}"
-#   file="${file%.sh}"
-#   link "$current_dir/$location" "$HOME/$file"
-# done | column -s'>' -t
