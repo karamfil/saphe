@@ -15,8 +15,8 @@ fi
 echo "> Current OS is $os"
 
 echo '# Update submodules'
-git submodule sync
-git submodule update --init --recursive --remote
+# git submodule sync
+# git submodule update --init --recursive --remote
 
 # think about having different installation file for different things
 # think about setting zsh $ZSHHOME and $ZPREZTO or something variable
@@ -25,11 +25,14 @@ echo
 echo '# Installing home files'
 # todo move this to be ZSH only
 # install *sh files in home directory
-for location in $(find home -name '.*'); do
+for location in $(find home -type l -name '*'); do
   file="${location##*/}"
   file="${file%.sh}"
-  ln -vfns "$current_dir/$location" "$HOME/$file"
+  
+  ln -vfns "$current_dir/$location" "$HOME/.$file"
 done | column -s'->' -t
+
+exit
 
 # Vim
 echo

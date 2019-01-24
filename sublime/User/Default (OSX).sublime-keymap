@@ -30,6 +30,7 @@
 	{ "keys": ["super+l", "super+l"]	, "command": "insert_snippet", "args": {"contents": "d(${SELECTION}$0);"}	, "context": [{ "key": "selector", "operator": "equal", "operand": "source.php" }]},
 	{ "keys": ["super+l", "super+e"]	, "command": "insert_snippet", "args": {"contents": "de(${SELECTION}$0);"}	, "context": [{ "key": "selector", "operator": "equal", "operand": "source.php" }]},
 	
+	{ "keys": ["super+ctrl+shift+a"], "command": "alignment" },
 	
 	// { "keys": ["ctrl+alt+shift+s"], "command": "insert_snippet", "args": {"contents": "{% trans '${SELECTION}' %}$0"} },
 	// { "keys": ["ctrl+super+shift+s"], "command": "insert_snippet", "args": {"contents": "{% blocktrans${0: with } %}${SELECTION}{% endblocktrans %}"} },
@@ -291,6 +292,6 @@
 	{ "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
 	{ "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
 	{ "keys": ["ctrl+alt+shift+'"], "command": "change_quotes" },
-	{ "keys": ["ctrl+]"], "command": "indent" },
-	{ "keys": ["ctrl+["], "command": "unindent" },
+	{ "keys": ["super+]"], "command": "indent" },
+	{ "keys": ["super+["], "command": "unindent" },
 ]
