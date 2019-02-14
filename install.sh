@@ -2,60 +2,76 @@
 
 os=`uname`
 
-if [ $os == "Darwin" ]
-then
-  # todo check for coreutils first
-  # brew list coreutils
-  current_dir=$(dirname $(greadlink -f "$0"))
-  sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+if [ $os == "Darwin" ]; then
+	# install main deps
+	echo "Installing brew package depenencies"
+	for pkg in coreutils ack ctags vim macvim; do
+		if brew list -1 | grep -q "^${pkg}\$"; then
+			echo "Package '$pkg' is installed"
+		else
+			echo "Package '$pkg' is not installed"
+			brew install $pkg
+		fi
+	done
+	
+	current_dir=$(dirname $(greadlink -f "$0"))
+	sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
 else
-  current_dir=$(dirname $(readlink -f "$0"))
+	echo "this is not yet finished"
+	
+	exit 1
+	
+	sublime_dir=""
+	current_dir=$(dirname $(readlink -f "$0"))
 fi
 
+echo
 echo "> Current OS is $os"
 
+echo
 echo '# Update submodules'
-# git submodule sync
-# git submodule update --init --recursive --remote
+git submodule sync
+git submodule update --init --recursive --remote
 
 # think about having different installation file for different things
 # think about setting zsh $ZSHHOME and $ZPREZTO or something variable
 
 echo
 echo '# Installing home files'
-# todo move this to be ZSH only
+# todo maybe move this to be ZSH only
 # install *sh files in home directory
 for location in $(find home -type l -name '*'); do
-  file="${location##*/}"
-  file="${file%.sh}"
-  
-  ln -vfns "$current_dir/$location" "$HOME/.$file"
+	file="${location##*/}"
+	file="${file%.sh}"
+	
+	ln -vfns "$current_dir/$location" "$HOME/.$file"
 done | column -s'->' -t
-
-exit
 
 # Vim
 echo
-echo '# Installing vim'
+echo '# Installing vim + deps'
 
 # install deps
-brew install vim ack ctags
 
 rm -rf "$HOME/.vim"
 ln -vfns "$current_dir/vim/janus/janus/vim" "$HOME/.vim"
+ln -vfns "$current_dir/vim/vimrc.before" "$HOME/.vimrc.before"
 ln -vfns "$current_dir/vim/vimrc.after" "$HOME/.vimrc.after"
 ln -vfns "$current_dir/vim/janus-custom" "$HOME/.janus"
 ln -vfns "$HOME/.vim/vimrc" "$HOME/.vimrc"
 
 # Sublime Text 3
 echo
-echo '# Installing Sublime Text'
-# if present give instructions
-# - remove directory - have a choice (Y/N)
-# - open sublime > enter license > install package control > close sublime
-# - continue
+if [[ -L "$sublime_dir" ]]; then 
+	echo '# Sublime Text is already linked'
+else
+	echo '# Linking Sublime Text (destructive)'
+	echo 'There will be more info for this later with better description and choice selector'
+	# if present give instructions
+	# - remove directory - have a choice (Y/N)
+	# - open sublime > enter license > install package control > close sublime
+	# - continue
 
-rm -r "$sublime_dir"
-ln -vfns "$current_dir/sublime/User" "$sublime_dir"
-
-
+	# rm -r "$sublime_dir"
+	# ln -vfns "$current_dir/sublime/User" "$sublime_dir"
+fi

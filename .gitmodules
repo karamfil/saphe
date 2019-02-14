@@ -23,3 +23,18 @@
 [submodule "vim/janus-custom/indent-object"]
 	path = vim/janus-custom/indent-object
 	url = git@github.com:michaeljsmith/vim-indent-object
+[submodule "vim/janus-custom/ale"]
+	path = vim/janus-custom/ale
+	url = git@github.com:w0rp/ale.git
+[submodule "vim/janus-custom/deoplete.nvim"]
+	path = vim/janus-custom/deoplete.nvim
+	url = git@github.com:Shougo/deoplete.nvim.git
+[submodule "vim/janus-custom/editorconfig-vim"]
+	path = vim/janus-custom/editorconfig-vim
+	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule "vim/janus-custom/splice.vim"]
+	path = vim/janus-custom/splice.vim
+	url = git@github.com:sjl/splice.vim.git
+[submodule "vim/janus-custom/repmo-vim"]
+	path = vim/janus-custom/repmo-vim
+	url = git@github.com:Houl/repmo-vim.git

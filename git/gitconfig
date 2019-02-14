@@ -1,0 +1,15 @@
+[diff]
+	tool = vimdiff
+
+[difftool]
+	prompt = false
+
+[merge]
+	tool = splice
+
+[mergetool "splice"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true<Paste>
+[user]
+	name = Alexander Ivanov
+	email = aivanov@shutterfly.com

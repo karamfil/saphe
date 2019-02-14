@@ -1,0 +1,2 @@
+" Disable some unnecessary plugins
+call janus#disable_plugin('fugitive')

@@ -1,9 +1,29 @@
-color sunburst
+set mouse=a
 
+set background=dark
+colorscheme sunburst
 
-let mapleader=" "
+set listchars=tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
 
+let mapleader = " "
+let maplocalleader = "\\"
 
 " Mappings
-map <Leader> <Plug>(easymotion-prefix)
 map <ENTER> @@
+
+map <Leader> <Plug>(easymotion-prefix)
+
+" nnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
+" nnoremap <silent> <localleader> :WhichKeyVisual '\\'<CR>
+
+nmap <silent> <C-Up> <Plug>(ale_previous_wrap)
+nmap <silent> <C-Down> <Plug>(ale_next_wrap)
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
