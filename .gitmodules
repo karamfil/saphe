@@ -1,7 +1,10 @@
+# ZSH
 [submodule "zsh/zprezto"]
 	path = zsh/zprezto
 	url = git@github.com:karamfil/prezto.git
 	branch = master
+
+# Vim
 [submodule "vim/janus"]
 	path = vim/janus
 	url = git@github.com:carlhuda/janus.git
@@ -38,3 +41,4 @@
 [submodule "vim/janus-custom/repmo-vim"]
 	path = vim/janus-custom/repmo-vim
 	url = git@github.com:Houl/repmo-vim.git
+

@@ -5,19 +5,16 @@ colorscheme sunburst
 
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
 
-let mapleader = " "
-let maplocalleader = "\\"
+" Undofile and persistent history
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undodir
+set undofile
 
-" Mappings
-map <ENTER> @@
-
-map <Leader> <Plug>(easymotion-prefix)
-
-" nnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
-" nnoremap <silent> <localleader> :WhichKeyVisual '\\'<CR>
-
-nmap <silent> <C-Up> <Plug>(ale_previous_wrap)
-nmap <silent> <C-Down> <Plug>(ale_next_wrap)
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -26,4 +23,54 @@ let g:ale_fixers = {
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
+
+" Mappings
+let mapleader = " "
+let maplocalleader = "\\"
+
+map <ENTER> @@
+
+map <Leader> <Plug>(easymotion-prefix)
+
+" Which Key
+" nnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
+" nnoremap <silent> <localleader> :WhichKeyVisual '\\'<CR>
+
+nmap <silent> <C-Up> <Plug>(ale_previous_wrap)
+nmap <silent> <C-Down> <Plug>(ale_next_wrap)
+
+" Repeatable Motions
+" repeat the last [count]motion or the last zap-key:
+map <expr> ; repmo#LastKey(';')|sunmap ;
+map <expr> , repmo#LastRevKey(',')|sunmap ,
+
+" add these mappings when repeating with `;' or `,':
+noremap <expr> f repmo#ZapKey('f')|sunmap f
+noremap <expr> F repmo#ZapKey('F')|sunmap F
+noremap <expr> t repmo#ZapKey('t')|sunmap t
+noremap <expr> T repmo#ZapKey('T')|sunmap T
+
+" map a motion and its reverse motion:
+noremap <expr> k repmo#SelfKey('k', 'j')|sunmap k
+noremap <expr> j repmo#SelfKey('j', 'k')|sunmap j
+noremap <expr> h repmo#SelfKey('h', 'l')|sunmap h
+noremap <expr> l repmo#SelfKey('l', 'h')|sunmap l
+noremap <expr> w repmo#SelfKey('w', 'b')|sunmap w
+noremap <expr> b repmo#SelfKey('b', 'w')|sunmap b
+noremap <expr> e repmo#SelfKey('e', 'ge')|sunmap e
+noremap <expr> ge repmo#SelfKey('ge', 'e')|sunmap ge
+noremap <expr> E repmo#SelfKey('E', 'gE')|sunmap E
+noremap <expr> gE repmo#SelfKey('gE', 'E')|sunmap gE
+
+noremap <expr> ( repmo#SelfKey('(', ')')|sunmap (
+noremap <expr> ) repmo#SelfKey(')', '(')|sunmap )
+noremap <expr> { repmo#SelfKey('{', '}')|sunmap {
+noremap <expr> } repmo#SelfKey('}', '{')|sunmap }
+
+noremap <expr> [M repmo#SelfKey('[M', ']M')|sunmap [M
+noremap <expr> ]M repmo#SelfKey(']M', '[M')|sunmap ]M
+
+noremap <expr> [m repmo#SelfKey('[m', ']m')|sunmap [m
+noremap <expr> ]m repmo#SelfKey(']m', '[m')|sunmap ]m
 
