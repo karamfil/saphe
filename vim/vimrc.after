@@ -25,6 +25,12 @@ let g:ale_fixers = {
 let g:deoplete#enable_at_startup = 1
 
 
+" Hard Time - to turn on you can use :HardTimeToggle
+" let g:hardtime_default_on = 1
+let g:hardtime_showmsg = 1
+let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
+
+
 " Mappings
 let mapleader = " "
 let maplocalleader = "\\"
