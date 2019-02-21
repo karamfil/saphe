@@ -12,8 +12,11 @@ endif
 if !isdirectory($HOME."/.vim/undo-dir")
     call mkdir($HOME."/.vim/undo-dir", "", 0700)
 endif
-set undodir=~/.vim/undodir
+set undodir=~/.vim/_temp/undodir
 set undofile
+
+" Make vim use the system clipboard:
+set clipboard^=unnamed,unnamedplus
 
 
 let g:ale_fixers = {
@@ -46,7 +49,7 @@ map <Leader> <Plug>(easymotion-prefix)
 nmap <silent> <C-Up> <Plug>(ale_previous_wrap)
 nmap <silent> <C-Down> <Plug>(ale_next_wrap)
 
-" Repeatable Motions
+" Repeatable Motions / TODO move these on its own separate file
 " repeat the last [count]motion or the last zap-key:
 map <expr> ; repmo#LastKey(';')|sunmap ;
 map <expr> , repmo#LastRevKey(',')|sunmap ,
