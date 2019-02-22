@@ -5,7 +5,7 @@ os=`uname`
 if [ $os == "Darwin" ]; then
 	# install main deps
 	echo "Installing brew package depenencies"
-	for pkg in coreutils ack ctags vim macvim; do
+	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux vim macvim zsh; do
 		if brew list -1 | grep -q "^${pkg}\$"; then
 			echo "Package '$pkg' is installed"
 		else
@@ -32,6 +32,7 @@ echo
 echo '# Update submodules'
 git submodule sync
 git submodule update --init --recursive --remote
+# git submodule update --recursive --remote
 
 # think about having different installation file for different things
 # think about setting zsh $ZSHHOME and $ZPREZTO or something variable
