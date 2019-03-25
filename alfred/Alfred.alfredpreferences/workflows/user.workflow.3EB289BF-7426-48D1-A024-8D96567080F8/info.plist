@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>joshtgreenwood.alfredroomrooms</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>8D0772EA-9E04-4D02-BB10-1AC8749E2216</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>91A24B85-52E4-4DE2-9D98-1B205BF8A7AB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C7B51B27-E032-4E68-9C1B-0365A5827897</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>91A24B85-52E4-4DE2-9D98-1B205BF8A7AB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Josh Greenwood</string>
+	<key>description</key>
+	<string>Easily choose and join Zoom rooms</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Zoom Rooms</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"Vitosha Cross-Team Planning","arg":"3237960815","subtitle":""},{"title":"Pathfinder Cross-Team Planning","arg":"6458052753"},{"title":"Pathfinder Daily","arg":"6458052753"},{"title":"Vitosha Daily","arg":"3237960815"}]</string>
+				<key>keyword</key>
+				<string>zm</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Zoom</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>C7B51B27-E032-4E68-9C1B-0365A5827897</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open "zoommtg://zoom.us/join.us?action=join&amp;confno={query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>91A24B85-52E4-4DE2-9D98-1B205BF8A7AB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>zz</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>cat &lt;&lt; EOB
+
+{"items": [
+
+EOB
+
+for f in /Users/karamfil/*; 
+
+do
+
+x=$(basename "$f")
+x1="${x%.*}"
+x12=$(echo $x | sed 's/_.*//')
+
+cat &lt;&lt; EOB
+
+
+    {
+        "uid": "$x1",
+        "type": "file",
+        "title": "$x1",
+        "subtitle": "",
+        "arg": "/mydirectory/$x1",
+        "autocomplete": "$x1",
+        "icon": {
+            "path": "colour_$x12.png"
+        }
+    },﻿
+
+
+EOB
+done
+
+cat &lt;&lt; EOB
+]}
+EOB</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Zoom test</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8D0772EA-9E04-4D02-BB10-1AC8749E2216</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>8D0772EA-9E04-4D02-BB10-1AC8749E2216</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>120</integer>
+		</dict>
+		<key>91A24B85-52E4-4DE2-9D98-1B205BF8A7AB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>400</integer>
+			<key>ypos</key>
+			<integer>80</integer>
+		</dict>
+		<key>C7B51B27-E032-4E68-9C1B-0365A5827897</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>3</string>
+	<key>webaddress</key>
+	<string>https://github.com/JoshTGreenwood/alfred-zoom-rooms</string>
+</dict>
+</plist>

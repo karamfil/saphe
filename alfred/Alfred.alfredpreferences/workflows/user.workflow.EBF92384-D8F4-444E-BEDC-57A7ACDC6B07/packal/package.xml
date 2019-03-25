@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Powerthesaurus Search</name>
+  <version>1.2</version>
+  <bundle>me.clarencecastillo.alfred-powerthesaurus</bundle>
+  <updated>1522944676</updated>
+  <file>powerthesaurus-1.2.alfredworkflow</file>
+</workflow>
