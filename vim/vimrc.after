@@ -1,19 +1,22 @@
+" Always show the mode, so you know what is up:
+set showmode
 
-colorscheme sunburst
-set background=dark
+" Turn on the wildmenu, get wild!
+set wildmenu
 
-set listchars=tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
+" Disable smart indent
+set smarttab autoindent nosmartindent
 
 " Undofile and persistent history
+set undofile
 if !isdirectory($HOME."/.vim/_temp/undodir")
     call mkdir($HOME."/.vim/_temp/undodir", "", 0700)
 endif
-" set undodir=~/.vim/_temp/undodir
-set undofile
 
-" Make vim use the system clipboard:
+" No annoying sound on errors
+set noerrorbells visualbell t_vb=
+
 set clipboard^=unnamed,unnamedplus
-set mouse=a
 
 " Clear out the cruft:
 set nobackup nowritebackup noswapfile
@@ -21,54 +24,52 @@ set nobackup nowritebackup noswapfile
 " Make searching easy, and case insensitive:
 set ignorecase smartcase incsearch hlsearch
 
-" Gives you a little jazzy info on the bottom:
-set title ruler
+if exists('g:vscode')
+  set nonumber
+else
+  colorscheme sunburst
+  set background=dark
+  set termguicolors
 
-" Turn on the wildmenu, get wild!
-set wildmenu
+  set listchars=tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
 
-" Always show the mode, so you know what is up:
-set showmode
+  " Make vim use the system clipboard:
+  set mouse=a
 
-" Disable smart indent
-set smarttab autoindent nosmartindent
+  " Gives you a little jazzy info on the bottom:
+  set title ruler
 
-" Enable hidden buffers
-set hidden
+  " Enable hidden buffers
+  set hidden
 
-" Reload files changed outside automatically
-" set autoread
+  " Reload files changed outside automatically
+  " set autoread
 
-" No annoying sound on errors
-set noerrorbells visualbell t_vb=
+  " Lint config
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'javascript': ['eslint'],
+  \}
 
+  " Use deoplete autocomplete
+  let g:deoplete#enable_at_startup = 1
+endif
 
 
 "
 " Plugins Settings
-"
-
-" Ack set to use ripgrep
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-
-" Lint config
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\}
-
-
-" Use deoplete autocomplete
-let g:deoplete#enable_at_startup = 1
-
+" """"""""""""""""
 
 " Hard Time - to turn on you can use :HardTimeToggle
 " let g:hardtime_default_on = 1
 let g:hardtime_showmsg = 1
 let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 
+
+" Ack set to use ripgrep
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
 
 "
 " Mappings

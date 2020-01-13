@@ -19,6 +19,13 @@
 	{ "keys": ["super+l", "super+a"]	, "command": "insert_snippet", "args": {"contents": "alert ${SELECTION}$0"}				, "context": [{ "key": "selector", "operator": "equal", "operand": "source.livescript" }]},
 	{ "keys": ["super+l", "super+b"]	, "command": "insert_snippet", "args": {"contents": "debugger;"}						, "context": [{ "key": "selector", "operator": "equal", "operand": "source.livescript" }]},
 	
+	{ "keys": ["super+l", "super+l"]	, "command": "insert_snippet", "args": {"contents": "console.log ${SELECTION}$0"}		, "context": [{ "key": "selector", "operator": "equal", "operand": "source.typescript" }]},
+	{ "keys": ["super+l", "super+i"]	, "command": "insert_snippet", "args": {"contents": "console.info ${SELECTION}$0"}		, "context": [{ "key": "selector", "operator": "equal", "operand": "source.typescript" }]},
+	{ "keys": ["super+l", "super+w"]	, "command": "insert_snippet", "args": {"contents": "console.warn ${SELECTION}$0"}		, "context": [{ "key": "selector", "operator": "equal", "operand": "source.typescript" }]},
+	{ "keys": ["super+l", "super+t"]	, "command": "insert_snippet", "args": {"contents": "console.trace();"}					, "context": [{ "key": "selector", "operator": "equal", "operand": "source.typescript" }]},
+	{ "keys": ["super+l", "super+a"]	, "command": "insert_snippet", "args": {"contents": "alert ${SELECTION}$0"}				, "context": [{ "key": "selector", "operator": "equal", "operand": "source.typescript" }]},
+	{ "keys": ["super+l", "super+b"]	, "command": "insert_snippet", "args": {"contents": "debugger;"}						, "context": [{ "key": "selector", "operator": "equal", "operand": "source.typescript" }]},
+	
 	{ "keys": ["super+l", "super+d"]	, "command": "insert_snippet", "args": {"contents": "logging.debug(${SELECTION}$0)"}	, "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]},
 	{ "keys": ["super+l", "super+i"]	, "command": "insert_snippet", "args": {"contents": "logging.info(${SELECTION}$0)"}		, "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]},
 	{ "keys": ["super+l", "super+w"]	, "command": "insert_snippet", "args": {"contents": "logging.warn(${SELECTION}$0)"}		, "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]},

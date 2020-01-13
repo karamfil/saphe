@@ -12,20 +12,26 @@
 		"Better CoffeeScript",
 		"BracketHighlighter",
 		"Color Highlighter",
+		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
+		"Gettext",
 		"Git Conflict Resolver",
 		"JsPrettier",
 		"NeoVintageous",
 		"Notes",
 		"Package Control",
+		"RemoteCollab",
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-eslint",
 		"SublimeLinter-stylelint",
+		"Terraform",
 		"Text Pastry",
 		"Tmux Syntax Highlight",
 		"Tomorrow Color Schemes",
 		"TypeScript Syntax",
-		"Vue Syntax Highlight"
+		"VimL",
+		"Vue Syntax Highlight",
+		"Web Inspector"
 	]
 }

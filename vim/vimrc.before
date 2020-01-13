@@ -1,3 +1,29 @@
 " Disable some unnecessary plugins
 call janus#disable_plugin('fugitive')
 call janus#disable_plugin('nerdcommenter')
+call janus#disable_plugin('dispatch')
+call janus#disable_plugin('endwise')
+call janus#disable_plugin('vimwiki')
+call janus#disable_plugin('vroom')
+
+" Disable some plugins when running in vscode
+if exists('g:vscode')
+  call janus#disable_plugin('deoplete')
+  call janus#disable_plugin('ale')
+  call janus#disable_plugin('css-color')
+  call janus#disable_plugin('ctrlp')
+  call janus#disable_plugin('gundo')
+  call janus#disable_plugin('multiple-cursors')
+  call janus#disable_plugin('narrowregion')
+  call janus#disable_plugin('nerdtree')
+  call janus#disable_plugin('kwbd')
+  call janus#disable_plugin('supertab')
+  call janus#disable_plugin('syntastic')
+  call janus#disable_plugin('tagbar')
+  call janus#disable_plugin('vim-gitgutter')
+  call janus#disable_plugin('vim-trailing-whitespace')
+  call janus#disable_plugin('webapi')
+  call janus#disable_plugin('zoomwin')
+endif
+
+if asd
