@@ -4,13 +4,8 @@
 [difftool]
 	prompt = false
 
-[merge]
-	tool = splice
+[core]
+	ignorecase = false
 
-[mergetool "splice"]
-	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-	trustExitCode = true
-
-[user]
-	name = Alexander Ivanov
-	email = aivanov@shutterfly.com
+[pull]
+	ff = true
