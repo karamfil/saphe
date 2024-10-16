@@ -8,10 +8,13 @@ call janus#disable_plugin('vroom')
 
 " Disable some plugins when running in vscode
 if exists('g:vscode')
+  " vscode has its own git integration
+else
   call janus#disable_plugin('ale')
   call janus#disable_plugin('css-color')
   call janus#disable_plugin('ctrlp')
   call janus#disable_plugin('deoplete')
+  call janus#disable_plugin('editorconfig-vim')
   call janus#disable_plugin('gundo')
   call janus#disable_plugin('kwbd')
   call janus#disable_plugin('multiple-cursors')
@@ -23,5 +26,5 @@ if exists('g:vscode')
   call janus#disable_plugin('vim-gitgutter')
   call janus#disable_plugin('vim-trailing-whitespace')
   call janus#disable_plugin('webapi')
-  call janus#disable_plugin('zoomwin')
+  " call janus#disable_plugin('zoomwin')
 endif

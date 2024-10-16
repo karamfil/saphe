@@ -7,5 +7,16 @@
 [core]
 	ignorecase = false
 
+[mergetool "splice"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true
+
+[user]
+	name = Alexander Ivanov
+	email = alexander.ivanov@concordeu.com
+[init]
+	defaultBranch = main
+[core]
+	ignorecase = false
 [pull]
-	ff = true
+	ff = only

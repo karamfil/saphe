@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[function(${2:argument}){ ${0:// body...} }]]></content>
-    <tabTrigger>funcul</tabTrigger>
-    <scope>source.js</scope>
-    <description>Anonumous Function (f){}</description>
-</snippet>

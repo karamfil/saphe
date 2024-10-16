@@ -25,8 +25,12 @@ set nobackup nowritebackup noswapfile
 set ignorecase smartcase incsearch hlsearch
 
 if exists('g:vscode')
-  set nonumber
+  " set nonumber
+
+  " fixing buffers indented with tabs
+  " autocmd WinEnter,WinNew,BufAdd * :setlocal tabstop=1
 else
+  let g:asd = 'aaa'
   colorscheme sunburst
   set background=dark
   set termguicolors

@@ -1,11 +1,17 @@
 #!/bin/bash
 
+# TODO
+# - Have an executable file with its own actions and dependencies like nvim
+# - use stow https://www.gnu.org/software/stow/
+#			https://www.youtube.com/watch?v=ZQ55lqi5IYw
+
+
 os=`uname`
 
 if [ $os == "Darwin" ]; then
 	# install main deps
 	echo "Installing brew package depenencies"
-	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux vim macvim zsh; do
+	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux neovim zsh; do
 		if brew list -1 | grep -q "^${pkg}\$"; then
 			echo "Package '$pkg' is installed"
 		else
@@ -61,18 +67,23 @@ ln -vfns "$current_dir/vim/vimrc.after" "$HOME/.vimrc.after"
 ln -vfns "$current_dir/vim/janus-custom" "$HOME/.janus"
 ln -vfns "$HOME/.vim/vimrc" "$HOME/.vimrc"
 
-# Sublime Text 3
-echo
-if [[ -L "$sublime_dir" ]]; then 
-	echo '# Sublime Text is already linked'
-else
-	echo '# Linking Sublime Text (destructive)'
-	echo 'There will be more info for this later with better description and choice selector'
-	# if present give instructions
-	# - remove directory - have a choice (Y/N)
-	# - open sublime > enter license > install package control > close sublime
-	# - continue
+ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/vi"
+ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/vim"
+ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/vimdiff"
+ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/view"
 
-	# rm -r "$sublime_dir"
-	# ln -vfns "$current_dir/sublime/User" "$sublime_dir"
-fi
+# # Sublime Text 3
+# echo
+# if [[ -L "$sublime_dir" ]]; then 
+# 	echo '# Sublime Text is already linked'
+# else
+# 	echo '# Linking Sublime Text (destructive)'
+# 	echo 'There will be more info for this later with better description and choice selector'
+# 	# if present give instructions
+# 	# - remove directory - have a choice (Y/N)
+# 	# - open sublime > enter license > install package control > close sublime
+# 	# - continue
+
+# 	# rm -r "$sublime_dir"
+# 	# ln -vfns "$current_dir/sublime/User" "$sublime_dir"
+# fi
