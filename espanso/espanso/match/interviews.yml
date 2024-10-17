@@ -1,0 +1,30 @@
+matches:
+  - trigger: :tg rev
+    replace: |
+      solution 1 is basic, using single/multiple if, not utilizing abs, weird parenthesis, did not cover all test cases.
+
+      solution 2 is not fully solved and have not refactored the code even if he had time
+
+      speed is ok
+
+  - trigger: :tg car1
+    replace: |
+      class Car(Model): 
+          plate: str
+      
+      for c in Car.objects.all():
+          print(c.plate)
+
+  - trigger: :tg car2
+    replace: |
+      class Owner(Model):
+        name: str
+      
+      class Car(Model): 
+          plate: str
+          owner: ForeignKey(Owner)
+      
+      for c in Car.objects.all():
+          print(c.plate)
+          print(c.owner.name)
+

@@ -1,0 +1,59 @@
+filter_title: Interview Questions
+enable: false
+
+matches:
+  - trigger: :int tpl
+    form_fields:
+      solution1:
+        multiline: true
+      solution2:
+        multiline: true
+    form: |
+      # [[name]]
+
+      ### Interviewers Present
+      * Sasho
+
+      ### Past Experience Notes
+
+      ### Technical Notes
+
+      ### Gaps and Misses
+
+      ### Positives
+
+      ### Negatives
+
+      ### Coding Challenge
+
+      Stars: [[stars]]
+
+      Review: [[review1]]
+      Time: [[time1]]
+      ```py
+        [[solution1]]
+      ```
+
+      Review: [[review2]]
+      Time: [[time2]]
+      ```py
+        [[solution2]]
+      ```
+
+      [[speed]]
+
+      ### Character Notes
+      * ⚠️ How good is their languages skills (English and whatever else the project requires)
+      * Do they have a solid No. Does he try bluffing, dodging or changing the subject?
+      * Do they have attention to detail
+      * Are they too talkative?
+      * Would you work with this candidate?
+      * Do you think the person is a cultural fit?
+
+      ### Other Notes
+
+      ### Overall Feelings & Conclusion
+      * Can we guesstimate the candidate's level of expertise?
+      * Do we proceed with the candidate
+
+      ---
