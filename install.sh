@@ -2,16 +2,57 @@
 
 # TODO
 # - Have an executable file with its own actions and dependencies like nvim
+# - Get rid of ZSH Prezto (https://zimfw.sh/)
 # - use stow https://www.gnu.org/software/stow/
 #			https://www.youtube.com/watch?v=ZQ55lqi5IYw
+
+# add config osx systems settings
+# add config alfred (~/Library/Application Support/Alfred/Alfred.alfredpreferences/preferences)
+# x add config finicky
+# x add config aerospace
+# add config ice /Users/karamfil/Library/Preferences/com.jordanbaird.Ice.plist
+# add config dbeaver (careful with passwords)
+
+# add manual config browserosaurus
+# add manual config iStatsMenu
+# add manual config hosts (helm)
+# add manual config vscode - use sync settings
+
+# add config remapping keys (±/~)
+# 	https://gist.github.com/bennlee/0f5bc8dc15a53b2cc1c81cd92363bf18?permalink_comment_id=5100184#gistcomment-5100184
+#	https://www.reddit.com/r/MacOS/comments/18g4vxn/cannot_remap_keys_on_macbook_pro_with_hidutils_in/
+#	hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
+# 		{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},
+#		{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]
 
 
 os=`uname`
 
+echo
+echo "> Current OS is $os"
+echo 
+
 if [ $os == "Darwin" ]; then
-	# install main deps
-	echo "Installing brew package depenencies"
-	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux neovim zsh; do
+	echo "# Package Manager"
+	if ! [ -x "$(command -v brew)" ]; then
+		echo "Package manager 'brew' is not installed"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/opt/homebrew/bin/brew shellenv)"
+
+		# setup autoupdate
+		brew tap domt4/autoupdate
+		brew install pinentry-mac
+		brew autoupdate start 86400 --upgrade --cleanup --immediate --sudo
+	else
+		echo "Package Manager 'brew' is already installed"
+	fi
+	
+	echo
+	echo "# Installing brew package depenencies"
+	
+	# install main deps (move some of these to particular installer)
+	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux neovim zsh jordanbaird-ice; do
+		# todo add a force update flag
 		if brew list -1 | grep -q "^${pkg}\$"; then
 			echo "Package '$pkg' is installed"
 		else
@@ -19,71 +60,28 @@ if [ $os == "Darwin" ]; then
 			brew install $pkg
 		fi
 	done
-	
-	current_dir=$(dirname $(greadlink -f "$0"))
-	sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+
+	# install as cask
+	for pkg in browserosaurus finicky; do
+		# todo add a force update flag
+		if brew list -1 | grep -q "^${pkg}\$"; then
+			echo "Package '$pkg' is already installed"
+		else
+			echo "Package '$pkg' is not installed"
+			brew install --cask $pkg
+		fi
+	done
 else
-	echo "this is not yet finished"
+	echo "Non OSX is not yet supported"
 	
 	exit 1
-	
-	sublime_dir=""
-	current_dir=$(dirname $(readlink -f "$0"))
 fi
 
-echo
-echo "> Current OS is $os"
-
-echo
-echo '# Update submodules'
-git submodule sync
-git submodule update --init --recursive --remote
-# git submodule update --recursive --remote
-
-# think about having different installation file for different things
-# think about setting zsh $ZSHHOME and $ZPREZTO or something variable
-
-echo
-echo '# Installing home files'
-# todo maybe move this to be ZSH only
-# install *sh files in home directory
-for location in $(find home -type l -name '*'); do
-	file="${location##*/}"
-	file="${file%.sh}"
-	
-	ln -vfns "$current_dir/$location" "$HOME/.$file"
-done | column -s'->' -t
-
-# Vim
-echo
-echo '# Installing vim + deps'
-
-# install deps
-
-rm -rf "$HOME/.vim"
-ln -vfns "$current_dir/vim/janus/janus/vim" "$HOME/.vim"
-ln -vfns "$current_dir/vim/vimrc.before" "$HOME/.vimrc.before"
-ln -vfns "$current_dir/vim/vimrc.after" "$HOME/.vimrc.after"
-ln -vfns "$current_dir/vim/janus-custom" "$HOME/.janus"
-ln -vfns "$HOME/.vim/vimrc" "$HOME/.vimrc"
-
-ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/vi"
-ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/vim"
-ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/vimdiff"
-ln -vfns "/usr/local/bin/nvim" "/usr/local/bin/view"
-
-# # Sublime Text 3
 # echo
-# if [[ -L "$sublime_dir" ]]; then 
-# 	echo '# Sublime Text is already linked'
-# else
-# 	echo '# Linking Sublime Text (destructive)'
-# 	echo 'There will be more info for this later with better description and choice selector'
-# 	# if present give instructions
-# 	# - remove directory - have a choice (Y/N)
-# 	# - open sublime > enter license > install package control > close sublime
-# 	# - continue
+# echo '# Update submodules'
+# git submodule sync
+# git submodule update --init --recursive --remote
 
-# 	# rm -r "$sublime_dir"
-# 	# ln -vfns "$current_dir/sublime/User" "$sublime_dir"
-# fi
+echo
+bash ./_installers/home.sh
+bash ./_installers/neovim.sh
