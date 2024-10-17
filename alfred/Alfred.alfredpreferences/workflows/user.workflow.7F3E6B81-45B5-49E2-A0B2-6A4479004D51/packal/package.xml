@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Big Huge Thesaurus</name>
-  <version>1.0</version>
-  <bundle>org.lazydev.bighugethesaurus</bundle>
-  <updated>1490224280</updated>
-  <file>big-huge-thesaurus.alfredworkflow</file>
-</workflow>
