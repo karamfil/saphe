@@ -2,7 +2,7 @@ add_newline = false
 
 # Use custom format
 format = """
-[╭─](white)$username$hostname in $directory$git_branch$git_status$git_state$git_metrics$cmd_duration $fill $time
+[╭─](white)$username$hostname in $directory$git_branch$git_status$git_state$git_metrics $fill $cmd_duration$time
 [╰─](white)$character """
 
 # Wait 10 milliseconds for starship to check files under the current directory.
@@ -56,11 +56,11 @@ show_milliseconds = true
 show_notifications = true
 notification_timeout = 60_000
 style = "bold yellow"
-format = "󰞌 [$duration]($style)"
+format = "󰁫 [$duration]($style) "
 
 [time]
 style = 'green'
-format = ' [$time]($style) '
+format = '󱑍 [$time]($style) '
 disabled = false
 
 [character]
