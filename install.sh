@@ -6,19 +6,14 @@
 # - use stow https://www.gnu.org/software/stow/
 #			https://www.youtube.com/watch?v=ZQ55lqi5IYw
 
-# add config osx systems settings
-# add config alfred (~/Library/Application Support/Alfred/Alfred.alfredpreferences/preferences)
-# x add config finicky
-# x add config aerospace
-# add config ice /Users/karamfil/Library/Preferences/com.jordanbaird.Ice.plist
-# add config dbeaver (careful with passwords)
+# - add config osx systems settings
+# - add config ice /Users/karamfil/Library/Preferences/com.jordanbaird.Ice.plist
+# - add config dbeaver (careful with passwords)
 
-# add manual config browserosaurus
-# add manual config iStatsMenu
-# add manual config hosts (helm)
-# add manual config vscode - use sync settings
+# - add manual config hosts (helm)
+# - add manual config vscode - use sync settings
 
-# add config remapping keys (±/~)
+# - add config remapping keys (±/~)
 # 	https://gist.github.com/bennlee/0f5bc8dc15a53b2cc1c81cd92363bf18?permalink_comment_id=5100184#gistcomment-5100184
 #	https://www.reddit.com/r/MacOS/comments/18g4vxn/cannot_remap_keys_on_macbook_pro_with_hidutils_in/
 #	hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
@@ -32,6 +27,7 @@ echo
 echo "> Current OS is $os"
 echo 
 
+# todo move brew to it own file
 if [ $os == "Darwin" ]; then
 	echo "# Package Manager"
 	if ! [ -x "$(command -v brew)" ]; then
@@ -51,7 +47,7 @@ if [ $os == "Darwin" ]; then
 	echo "# Installing brew package depenencies"
 	
 	# install main deps (move some of these to particular installer)
-	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux neovim zsh jordanbaird-ice; do
+	for pkg in coreutils gnu-sed gawk grep ripgrep ack ctags tmux neovim jordanbaird-ice starship fzf fd zsh zoxide zsh-vi-mode zsh-autosuggestions zsh-syntax-highlighting; do
 		# todo add a force update flag
 		if brew list -1 | grep -q "^${pkg}\$"; then
 			echo "Package '$pkg' is installed"
@@ -62,7 +58,7 @@ if [ $os == "Darwin" ]; then
 	done
 
 	# install as cask
-	for pkg in browserosaurus finicky; do
+	for pkg in browserosaurus finicky font-sauce-code-pro-nerd-font; do
 		# todo add a force update flag
 		if brew list -1 | grep -q "^${pkg}\$"; then
 			echo "Package '$pkg' is already installed"
@@ -83,5 +79,9 @@ fi
 # git submodule update --init --recursive --remote
 
 echo
-bash ./_installers/home.sh
-bash ./_installers/neovim.sh
+bash _installers/home.sh
+# bash _installers/neovim.sh
+
+bash alfred/_install.sh
+bash starship/_install.sh
+bash nvim/_install.sh

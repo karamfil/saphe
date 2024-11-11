@@ -219,7 +219,6 @@ alt-z = ['move-node-to-workspace Z', 'mode main']
 
 alt-tab = ['move-workspace-to-monitor --wrap-around next', 'mode main']
 
-
 [mode.resize.binding]
 esc = ['mode main']
 
@@ -264,7 +263,7 @@ run = ['move-node-to-workspace 2m']
 
 [[on-window-detected]]
 if.app-id = 'com.azuredatastudio.oss'
-run = ['move-node-to-workspace 3u']
+run = ['move-node-to-workspace 3m']
 
 [[on-window-detected]]
 if.app-id = 'org.jkiss.dbeaver.core.product'
@@ -272,7 +271,7 @@ run = ['move-node-to-workspace 3m']
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-run = ['move-node-to-workspace 4u']
+run = ['move-node-to-workspace 4m']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.SafariTechnologyPreview'

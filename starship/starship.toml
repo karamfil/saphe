@@ -1,0 +1,73 @@
+add_newline = false
+
+# Use custom format
+format = """
+[╭─](white)$username$hostname in $directory$git_branch$git_status$git_state$git_metrics$cmd_duration $fill $time
+[╰─](white)$character """
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+[fill]
+symbol = ' '
+
+# Username settings
+[username]
+show_always = true
+style_root = "bold red"
+style_user = "bold green"
+format = "[$user]($style)"
+
+# Hostname settings
+[hostname]
+ssh_only = false
+format = "@[$hostname](bold yellow)"
+# trim_at = ".companyname.com"
+
+# Directory indicator
+[directory]
+style = "blue"
+before_repo_root_style = "cyan"
+repo_root_style = "cyan"
+read_only = "🔒"
+read_only_style = "red"
+truncation_length = 0
+truncate_to_repo = true
+truncation_symbol = "~/…/"
+home_symbol = '~'
+format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+
+[git_status]
+disabled = true
+
+
+[git_branch]
+style = "bg:#005F00"
+symbol = " "
+format = 'on [ $symbol$branch(:$remote_branch) ]($style) '
+
+[git_metrics]
+added_style = 'bold blue'
+disabled = false
+
+[cmd_duration]
+min_time = 1
+show_milliseconds = true
+show_notifications = true
+notification_timeout = 60_000
+style = "bold yellow"
+format = "󰞌 [$duration]($style)"
+
+[time]
+style = 'green'
+format = ' [$time]($style) '
+disabled = false
+
+[character]
+format = "$symbol"
+success_symbol = "[](bold green)"
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[N](bold green)"               # The format string used before the text input if the shell is in vim normal mode
+vimcmd_replace_one_symbol = '[R](bold purple)' # The format string used before the text input if the shell is in vim replace_one mode.
+vimcmd_replace_symbol = '[R](bold purple)'     # The format string used before the text input if the shell is in vim replace mode.
+vimcmd_visual_symbol = '[V](bold yellow)'      # The format string used before the text input if the shell is in vim visual mode.

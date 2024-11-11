@@ -12,5 +12,7 @@
 		<string>features.websearch.imdb.fallback</string>
 		<string>features.websearch.gtranslate.fallback</string>
 	</array>
+	<key>showPreferences</key>
+	<false/>
 </dict>
 </plist>

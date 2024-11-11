@@ -317,7 +317,7 @@
 	<key>description</key>
 	<string>Calculate Anything</string>
 	<key>disabled</key>
-	<false/>
+	<true/>
 	<key>name</key>
 	<string>Calculate Anything</string>
 	<key>objects</key>
